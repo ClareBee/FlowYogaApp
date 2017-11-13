@@ -1,0 +1,217 @@
+package com.example.clareblackburne.yogaapp;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+
+import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_CHAKRA;
+import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_DURATION;
+import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_ID;
+import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_IMAGE;
+import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_NAME;
+import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_SANSKRITNAME;
+import static com.example.clareblackburne.yogaapp.DBHelper.POSES_TABLE_NAME;
+import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_DAY;
+import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_DURATION;
+import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_FOCUS;
+import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_ID;
+import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_NAME;
+import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_STATUS;
+import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_TABLE_NAME;
+import static com.example.clareblackburne.yogaapp.DBHelper.SET_COLUMN_ID;
+import static com.example.clareblackburne.yogaapp.DBHelper.SET_POSES_ID;
+import static com.example.clareblackburne.yogaapp.DBHelper.SET_SESSION_ID;
+import static com.example.clareblackburne.yogaapp.DBHelper.SET_TABLE_NAME;
+
+/**
+ * Created by clareblackburne on 11/11/2017.
+ */
+
+public class Session {
+    private int id;
+    private String name;
+    private String day;
+    private String focus;
+    private Integer duration;
+    private String status;
+
+    public Session(String name, String day, String focus, Integer duration, String status){
+        this.name = name;
+        this.day = day;
+        this.focus = focus;
+        this.duration = duration;
+        this.status = status;
+    }
+
+    public Session(int id, String name, String day, String focus, Integer duration, String status){
+        this.id = id;
+        this.name = name;
+        this.day = day;
+        this.focus = focus;
+        this.duration = duration;
+        this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public String getFocus() {
+        return focus;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public boolean save(DBHelper dbHelper){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(SESSIONS_COLUMN_NAME, this.name);
+        cv.put(SESSIONS_COLUMN_DAY, this.day);
+        cv.put(SESSIONS_COLUMN_FOCUS, this.focus);
+        cv.put(SESSIONS_COLUMN_DURATION, this.duration);
+        cv.put(SESSIONS_COLUMN_STATUS, this.status);
+        db.insert(SESSIONS_TABLE_NAME, null, cv);
+        return true;
+    }
+
+    public static ArrayList<Session> all(DBHelper dbHelper){
+        ArrayList<Session> sessions = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SESSIONS_TABLE_NAME + " ORDER BY " + SESSIONS_COLUMN_DAY, null);
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex(SESSIONS_COLUMN_ID));
+            String name = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_NAME));
+            String day = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_DAY));
+            String focus = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_FOCUS));
+            int duration = cursor.getInt(cursor.getColumnIndex(SESSIONS_COLUMN_DURATION));
+            String status = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_STATUS));
+            Session session = new Session(id, name, day, focus, duration, status);
+            sessions.add(session);
+        }
+        cursor.close();
+        return sessions;
+    }
+
+
+    public static boolean deleteAll(DBHelper dbHelper){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM " + SESSIONS_TABLE_NAME);
+        return true;
+    }
+
+    public static boolean delete(DBHelper dbHelper, Integer id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = " id = ?";
+        String[] values = {id.toString()};
+        db.delete(SESSIONS_TABLE_NAME, selection, values);
+        return true;
+    }
+
+    public boolean updateAsComplete(DBHelper dbHelper){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = "id=?";
+        ContentValues cv = new ContentValues();
+        cv.put(SESSIONS_COLUMN_NAME, this.name);
+        cv.put(SESSIONS_COLUMN_DAY, this.day);
+        cv.put(SESSIONS_COLUMN_FOCUS, this.focus);
+        cv.put(SESSIONS_COLUMN_DURATION, this.duration.toString());// is this updating?
+        cv.put(SESSIONS_COLUMN_STATUS, "Y");
+
+        Integer id = this.getId();
+        String[] args = new String[] {String.valueOf(id)};
+        db.update(SESSIONS_TABLE_NAME, cv, selection, args);
+        return true;
+    }
+
+    public boolean redoSession(DBHelper dbHelper){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = "id=?";
+        ContentValues cv = new ContentValues();
+        cv.put(SESSIONS_COLUMN_NAME, this.name);
+        cv.put(SESSIONS_COLUMN_DAY, this.day);
+        cv.put(SESSIONS_COLUMN_FOCUS, this.focus);
+        cv.put(SESSIONS_COLUMN_DURATION, this.duration.toString());// is this updating?
+        cv.put(SESSIONS_COLUMN_STATUS, "N");
+
+        Integer id = this.getId();
+        String[] args = new String[] {String.valueOf(id)};
+        db.update(SESSIONS_TABLE_NAME, cv, selection, args);
+        return true;
+    }
+    public Session getSessionById(Integer thisSessionId, DBHelper dbHelper){
+        ArrayList<Session> sessions = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SESSIONS_TABLE_NAME + " WHERE id = " + thisSessionId.toString(), null);
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex(SESSIONS_COLUMN_ID));
+            String name = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_NAME));
+            String day = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_DAY));
+            String focus = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_FOCUS));
+            Integer duration = cursor.getInt(cursor.getColumnIndex(SESSIONS_COLUMN_DURATION));
+            String status = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_STATUS));
+            Session session = new Session(id, name, day, focus, duration, status);
+            sessions.add(session);
+        }
+        cursor.close();
+        return sessions.get(0);
+    }
+
+    public Set getSet(DBHelper dbhelper){
+        ArrayList<Set> sets = new ArrayList<>();
+        SQLiteDatabase db = dbhelper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SET_TABLE_NAME + " WHERE session_id  = " + this.getId(), null);
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex(SET_COLUMN_ID));
+            int session_id = cursor.getInt(cursor.getColumnIndex(SET_SESSION_ID));
+            int poses_id = cursor.getInt(cursor.getColumnIndex(SET_POSES_ID));
+            Set set = new Set(id, session_id, poses_id);
+            sets.add(set);
+        }
+        cursor.close();
+        if(sets.size() > 0) {
+            return sets.get(0);
+
+        } else {
+            return null;
+        }
+
+    }
+
+    public ArrayList<Pose> findAllPoses(DBHelper dbHelper){
+        ArrayList<Pose> poses = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + POSES_TABLE_NAME + " ORDER BY " + POSES_COLUMN_NAME, null);
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_ID));
+            String name = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_NAME));
+            String sanskritName = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_SANSKRITNAME));
+            String chakra = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_CHAKRA));
+            int duration = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_DURATION));
+            int image = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_IMAGE));
+            Pose pose = new Pose(id, name, sanskritName, chakra, duration, image);
+            poses.add(pose);
+        }
+        cursor.close();
+        return poses;
+    }
+
+
+
+}

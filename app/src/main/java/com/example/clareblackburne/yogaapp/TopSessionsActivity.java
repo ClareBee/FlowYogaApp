@@ -1,0 +1,49 @@
+package com.example.clareblackburne.yogaapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
+public class TopSessionsActivity extends MainMenu {
+
+    DBHelper dbHelper;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.top_sessions_list);
+        dbHelper = new DBHelper(this);
+        ArrayList<Session> sessionList = Session.all(dbHelper);
+
+        TopSessionsAdapter sessionsAdapter = new TopSessionsAdapter(this, sessionList);
+        ListView listView = (ListView)findViewById(R.id.top_sessions_list);
+        listView.setAdapter(sessionsAdapter);
+
+    }
+
+    public void getSession(View listItem){
+
+        Session session = (Session) listItem.getTag();
+        Intent i = new Intent(this, SessionActivity.class);
+        i.putExtra("name", session.getName());
+        i.putExtra("day", session.getDay());
+        i.putExtra("focus", session.getFocus());
+        i.putExtra("duration", session.getDuration());
+        i.putExtra("status", session.getStatus());
+        i.putExtra("id", session.getId());
+        startActivity(i);
+    }
+
+    //how do i access session from here without recourse to a listItem?
+//    public void markComplete(View button){
+//        DBHelper dbh = new DBHelper(this);
+//        session.updateAsComplete(dbh);
+//    }
+
+
+}
+

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">YogaApp</string>
+
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="dummy_button"> Welcome </string>
+    <string name="dummy_content">Yoga App</string>
+    <string name="quotation">Get quotation</string>
+    <string name="addPoseToSession">Add Pose to Session</string>
+    <string name="complete">Complete?</string>
+    <string name="imageOfPose">Image of pose</string>
+
+</resources>
