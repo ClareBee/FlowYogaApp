@@ -75,7 +75,6 @@ public class Set {
         Cursor cursor = db.rawQuery(selectAllQuery, values);
         if (cursor != null && cursor.getCount() > 0) {
             do {
-                cursor.moveToFirst();
                 int id = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_ID));
                 String name = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_NAME));
                 String sanskritName = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_SANSKRITNAME));
