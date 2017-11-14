@@ -3,7 +3,7 @@
 
     <string name="title_activity_welcome">Welcome</string>
     <string name="dummy_button"> Welcome </string>
-    <string name="dummy_content">Yoga App</string>
+    <string name="dummy_content">Flow Yoga App</string>
     <string name="quotation">Get quotation</string>
     <string name="addPoseToSession">Add Pose to Session</string>
     <string name="complete">Complete?</string>
