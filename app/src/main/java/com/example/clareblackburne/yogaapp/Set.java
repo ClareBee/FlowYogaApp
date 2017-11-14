@@ -74,7 +74,7 @@ public class Set {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectAllQuery, values);
         if (cursor != null && cursor.getCount() > 0) {
-            do {
+            while(cursor.moveToNext()){
                 int id = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_ID));
                 String name = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_NAME));
                 String sanskritName = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_SANSKRITNAME));
@@ -84,7 +84,6 @@ public class Set {
                 Pose pose = new Pose(name, sanskritName, chakra, duration, image);
                 allPosesInThisSet.add(pose);
             }
-            while (cursor.moveToNext());
             cursor.close();
         } else {
 //            Toast.makeText(R.id. "No poses in this session yet", Toast.LENGTH_SHORT).show();
