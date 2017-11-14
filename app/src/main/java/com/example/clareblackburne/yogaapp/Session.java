@@ -6,13 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_CHAKRA;
-import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_DURATION;
-import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_ID;
-import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_IMAGE;
-import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_NAME;
-import static com.example.clareblackburne.yogaapp.DBHelper.POSES_COLUMN_SANSKRITNAME;
-import static com.example.clareblackburne.yogaapp.DBHelper.POSES_TABLE_NAME;
 import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_DAY;
 import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_DURATION;
 import static com.example.clareblackburne.yogaapp.DBHelper.SESSIONS_COLUMN_FOCUS;
@@ -162,10 +155,10 @@ public class Session {
         db.close();
         return true;
     }
-    public Session getSessionById(Integer thisSessionId, DBHelper dbHelper){
+    public static Session getSessionById(DBHelper dbHelper, Integer sessionId){
         ArrayList<Session> sessions = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + SESSIONS_TABLE_NAME + " WHERE id = " + thisSessionId.toString(), null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SESSIONS_TABLE_NAME + " WHERE id = " + sessionId.toString(), null);
         while(cursor.moveToNext()){
             int id = cursor.getInt(cursor.getColumnIndex(SESSIONS_COLUMN_ID));
             String name = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_NAME));
@@ -204,26 +197,5 @@ public class Session {
             return null;
         }
     }
-
-    public ArrayList<Pose> findAllPoses(DBHelper dbHelper){
-        ArrayList<Pose> poses = new ArrayList<>();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + POSES_TABLE_NAME + " ORDER BY " + POSES_COLUMN_NAME, null);
-        while(cursor.moveToNext()){
-            int id = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_ID));
-            String name = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_NAME));
-            String sanskritName = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_SANSKRITNAME));
-            String chakra = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_CHAKRA));
-            int duration = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_DURATION));
-            int image = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_IMAGE));
-            Pose pose = new Pose(id, name, sanskritName, chakra, duration, image);
-            poses.add(pose);
-        }
-        cursor.close();
-        db.close();
-        return poses;
-    }
-
-
 
 }

@@ -41,7 +41,6 @@ public class TopSessionsAdapter extends ArrayAdapter<Session> {
                 DBHelper dbHelper = new DBHelper(finalListItemView.getContext());
                 currentSession.updateAsComplete(dbHelper);
                 currentSession.setStatus("Y");
-                //doesn't refresh until you do it manually
                 notifyDataSetChanged();
             }
 

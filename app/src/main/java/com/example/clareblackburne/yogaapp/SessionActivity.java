@@ -26,7 +26,7 @@ public class SessionActivity extends MainMenu {
     ImageView sessionImageView;
     DBHelper dbHelper;
     ListView setList2;
-    Session session;
+    Session thisSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +37,19 @@ public class SessionActivity extends MainMenu {
         Bundle extras = getIntent().getExtras();
         Integer session_id = extras.getInt("id");
 
-        session = dbHelper.getSessionById(session_id);
+        thisSession = Session.getSessionById(dbHelper, session_id);
 
         nameSession = (TextView)findViewById(R.id.nameSession);
-        nameSession.setText(session.getName());
+        nameSession.setText(thisSession.getName());
 
         daySession = (TextView)findViewById(R.id.daySession);
-        daySession.setText(session.getDay());
+        daySession.setText(thisSession.getDay());
 
         focusSession = (TextView)findViewById(R.id.focusSession);
-        focusSession.setText(session.getFocus());
+        focusSession.setText(thisSession.getFocus());
 
         durationSession = (TextView)findViewById(R.id.durationSession);
-        durationSession.setText(session.getDuration().toString());
+        durationSession.setText(thisSession.getDuration().toString());
 
         setList2 = (ListView)findViewById(R.id.setList);
 
@@ -61,7 +61,7 @@ public class SessionActivity extends MainMenu {
         sessionImageView.setImageResource(R.drawable.lotus3);
 
 
-        Set set = session.getSetInSession(dbHelper);
+        Set set = thisSession.getSetInSession(dbHelper);
         if(set != null) {
 
             ArrayList<Pose> posesInSetList = set.allPosesInSet(session_id, dbHelper);
@@ -103,12 +103,12 @@ public class SessionActivity extends MainMenu {
     public void addPoseToThisSession(View button){
         if(button.getId() == R.id.addPoseToSession){
         Intent intent = new Intent(this, AddSetActivity.class);
-            intent.putExtra("id", session.getId());
-            intent.putExtra("name", session.getName());
-            intent.putExtra("day", session.getDay());
-            intent.putExtra("focus", session.getFocus());
-            intent.putExtra("duration", session.getDuration());
-            intent.putExtra("status", session.getStatus());
+            intent.putExtra("id", thisSession.getId());
+            intent.putExtra("name", thisSession.getName());
+            intent.putExtra("day", thisSession.getDay());
+            intent.putExtra("focus", thisSession.getFocus());
+            intent.putExtra("duration", thisSession.getDuration());
+            intent.putExtra("status", thisSession.getStatus());
         startActivity(intent);}
     }
 
@@ -117,7 +117,7 @@ public class SessionActivity extends MainMenu {
         if(button.getId() == R.id.completeButton){
             button.setBackgroundColor(Color.DKGRAY);
             DBHelper thisdb = new DBHelper(this);
-            session.updateAsComplete(thisdb);
+            thisSession.updateAsComplete(thisdb);
             thisdb.close();
             Intent returnToStart = new Intent(this, TopSessionsActivity.class);
             startActivity(returnToStart);
@@ -127,7 +127,7 @@ public class SessionActivity extends MainMenu {
     public void doSessionAgain(View button){
         if(button.getId() == R.id.redoButton){
             DBHelper anotherdb = new DBHelper(this);
-            session.redoSession(anotherdb);
+            thisSession.redoSession(anotherdb);
             anotherdb.close();
             Intent goback = new Intent(this, TopSessionsActivity.class);
             startActivity(goback);

@@ -46,7 +46,7 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
         session = new Session(session_id, name, day, focus, duration, status);
 
         DBHelper db = new DBHelper(this);
-        ArrayList<Pose> poses = session.findAllPoses(db);
+        ArrayList<Pose> poses = Pose.all(db);
 
         ArrayAdapter<Pose> adapter = new ArrayAdapter<Pose>(getApplicationContext(), android.R.layout.simple_spinner_item, poses);
         adapter
@@ -65,15 +65,11 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
 
         dbHelper = new DBHelper(this);
 
-        Set set = session.getSetInSession(dbHelper);//returns a set to check that the session has a set attached
-//        if(set == null){ this is wrong - woud prevent another 'set' i.e. pose being added to a session
+        Set set = session.getSetInSession(dbHelper);
         Set newSet = new Set(session_id, pose_id);
         newSet.save(dbHelper);
-        dbHelper.close();
-//     }
-//        else {
-//        set.update(session_id, pose_id, dbHelper);
-//        }
+
+
 
 
         Intent intent2  = new Intent(this, SessionActivity.class);

@@ -25,7 +25,7 @@ public class SetAdapter extends ArrayAdapter<Pose>  {
         Pose currentPoseinSet = getItem(position);
         if(currentPoseinSet != null) {
             TextView namePoseInSet = (TextView) listItemView.findViewById(R.id.poseInSetName);
-            namePoseInSet.setText(currentPoseinSet.getName().toString()); // generating  null object reference without if but not inflating listview on session activity xml with second pose
+            namePoseInSet.setText(currentPoseinSet.getName().toString());
         }
 
         listItemView.setTag(currentPoseinSet);

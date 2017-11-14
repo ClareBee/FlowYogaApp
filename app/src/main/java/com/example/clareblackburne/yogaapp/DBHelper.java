@@ -1,12 +1,9 @@
 package com.example.clareblackburne.yogaapp;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import java.util.ArrayList;
 
 /**
  * Created by clareblackburne on 11/11/2017.
@@ -89,26 +86,4 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-    public Session getSessionById(Integer thisSessionId){
-        ArrayList<Session> sessions = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + SESSIONS_TABLE_NAME + " WHERE id = " + thisSessionId.toString(), null);
-        if(cursor != null && cursor.getCount() > 0){
-        while(cursor.moveToNext()){
-            int id = cursor.getInt(cursor.getColumnIndex(SESSIONS_COLUMN_ID));
-            String name = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_NAME));
-            String day = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_DAY));
-            String focus = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_FOCUS));
-            Integer duration = cursor.getInt(cursor.getColumnIndex(SESSIONS_COLUMN_DURATION));
-            String status = cursor.getString(cursor.getColumnIndex(SESSIONS_COLUMN_STATUS));
-            Session session = new Session(id, name, day, focus, duration, status);
-            sessions.add(session);
-        }}
-        else { return null;
-        }
-        cursor.close();
-        return sessions.get(0);
-    }
 }

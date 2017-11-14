@@ -44,10 +44,6 @@ public class PoseActivity extends MainMenu {
 
     }
 
-//
-//    public void editPose(View button){
-//
-//    }
 
 
     public void deletePose(View button){

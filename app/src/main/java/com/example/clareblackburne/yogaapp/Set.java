@@ -86,7 +86,6 @@ public class Set {
             }
             cursor.close();
         } else {
-//            Toast.makeText(R.id. "No poses in this session yet", Toast.LENGTH_SHORT).show();
             allPosesInThisSet.add(null);
         }
 
