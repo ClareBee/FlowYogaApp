@@ -177,9 +177,9 @@ public class Session {
         SQLiteDatabase db = dbhelper.getReadableDatabase();
         Integer this_session_id = this.getId();
 
-        Cursor cursor = db.rawQuery("SELECT sessions_poses.* FROM " + SET_TABLE_NAME + " WHERE session_id  = " + this_session_id.toString(), null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SET_TABLE_NAME + " WHERE session_id  = " + this_session_id.toString(), null);
         while(cursor.moveToNext()){
-//            cursor.moveToPosition(0);
+       //     cursor.moveToNext();
             int id = cursor.getInt(cursor.getColumnIndex(SET_COLUMN_ID));
             int session_id = cursor.getInt(cursor.getColumnIndex(SET_SESSION_ID));
             int poses_id = cursor.getInt(cursor.getColumnIndex(SET_POSES_ID));

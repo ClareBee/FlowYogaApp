@@ -25,15 +25,15 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_set);
 
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
-        addPoseToSessionButton = (Button) findViewById(R.id.addPoseToSessionButton);
+        addPoseToSessionButton = (Button)findViewById(R.id.addPoseToSessionButton);
         loadPosesToSpinner();
     }
 
 
-    public void loadPosesToSpinner() {
+    public void loadPosesToSpinner(){
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
