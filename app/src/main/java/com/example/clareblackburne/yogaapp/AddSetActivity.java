@@ -25,15 +25,15 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_set);
 
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
-        addPoseToSessionButton = (Button)findViewById(R.id.addPoseToSessionButton);
-        loadPosesToSpinner();}
+        addPoseToSessionButton = (Button) findViewById(R.id.addPoseToSessionButton);
+        loadPosesToSpinner();
+    }
 
 
-
-    public void loadPosesToSpinner(){
+    public void loadPosesToSpinner() {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -54,7 +54,7 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
         spinner.setAdapter(adapter);
     }
 
-    public void onClickAddPoseToSessionButton(View button){
+    public void onClickAddPoseToSessionButton(View button) {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         Integer session_id = extras.getInt("id");
@@ -64,12 +64,14 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
 
         dbHelper = new DBHelper(this);
 
-        Set set = session.getSet(dbHelper);
-        if(set == null){
-            Set newSet = new Set(session_id, pose_id);
-            newSet.save(dbHelper);}
-        else {
-        set.update(session_id, pose_id, dbHelper);}
+        Set set = session.getSetInSession(dbHelper);//returns a set to check that the session has a set attached
+//        if(set == null){
+        Set newSet = new Set(session_id, pose_id);
+        newSet.save(dbHelper);
+//     }
+//        else {
+//        set.update(session_id, pose_id, dbHelper);
+//        }
 
 
         Intent intent2  = new Intent(this, SessionActivity.class);

@@ -61,7 +61,7 @@ public class SessionActivity extends MainMenu {
         sessionImageView.setImageResource(R.drawable.lotus3);
 
 
-        Set set = session.getSet(dbHelper);
+        Set set = session.getSetInSession(dbHelper);
         if(set != null) {
 
             ArrayList<Pose> posesInSetList = set.allPosesInSet(session_id, dbHelper);
