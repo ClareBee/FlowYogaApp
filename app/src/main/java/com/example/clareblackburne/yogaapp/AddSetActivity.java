@@ -63,7 +63,6 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
         Integer pose_id = pose.getId();
 
         dbHelper = new DBHelper(this);
-        dbHelper = new DBHelper(this);
 
         Set set = session.getSet(dbHelper);
         if(set == null){

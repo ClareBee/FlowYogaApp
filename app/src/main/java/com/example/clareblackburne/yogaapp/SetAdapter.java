@@ -23,9 +23,10 @@ public class SetAdapter extends ArrayAdapter<Pose>  {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.poses_in_set, parent, false);
         }
         Pose currentPoseinSet = getItem(position);
-        TextView namePoseInSet = (TextView)listItemView.findViewById(R.id.poseInSetName);
-        namePoseInSet.setText(currentPoseinSet.getName().toString()); // generating  null object reference
-
+        if(currentPoseinSet != null) {
+            TextView namePoseInSet = (TextView) listItemView.findViewById(R.id.poseInSetName);
+            namePoseInSet.setText(currentPoseinSet.getName().toString()); // generating  null object reference without if but not inflating listview on session activity xml with second pose
+        }
 
         listItemView.setTag(currentPoseinSet);
         return listItemView;
