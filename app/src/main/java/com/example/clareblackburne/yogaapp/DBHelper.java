@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public DBHelper(Context context){
-        super(context, DATABASE_NAME, null, 4);
+        super(context, DATABASE_NAME, null, 6);
     }
 
     public void onCreate(SQLiteDatabase db){
@@ -51,10 +51,32 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //seed tables
 
-        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session 1', 'Monday', 'Legs', 60, 'N');");
-        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Bridge', 'Setu Bandha Sarvangasasana', 'Root Heart Throat', 1, " +  R.drawable.bridge + ");");
-
-
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Monday', 'Legs', 60, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Tuesday', 'Shoulders', 45, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Thursday', 'Arms', 50, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Saturday', 'Core', 60, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Relaxation', 'Sunday', 'All', 60, 'N');");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Bridge', 'Setu Bandha Sarvangasasana', 'Heart Throat', 1, " +  R.drawable.bridge + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Half Moon Pose', 'Ardha Chandrasana', 'Sacral', 1, " +  R.drawable.halfmoon + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Sitting Spinal Twist', 'Ardha Matsyendrasana', 'Sacral', 1, " +  R.drawable.seatedspinal + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Cobra', 'Bhujangasana', 'Heart', 2, " +  R.drawable.cobra + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Boat', 'Navasana', 'Solar', 1, " +  R.drawable.boat + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Full Wheel', 'Urdhva Dhanurasana', 'All', 1, " +  R.drawable.fullwheel + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Cat', 'Marjariasana', 'All', 1, " +  R.drawable.cat + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Cow', 'Bitilasana', 'Heart', 1, " +  R.drawable.cow + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Corpse', 'Savasana', 'Crown Brow', 10, " +  R.drawable.corpse + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Eagle', 'Garudasana', 'Heart', 1, " +  R.drawable.eagle + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Child', 'Balasana', 'Root Brow', 3, " +  R.drawable.child + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Triangle', 'Trikonasana', 'Sacral', 1, " +  R.drawable.triangle + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Tree', 'Vrikasana', 'Root', 1, " +  R.drawable.tree + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Downward Dog', 'Adho Mukha Svasana', 'Solar', 3, " +  R.drawable.downdog + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Side Plank', 'Vasisthasana', 'Heart', 1, " +  R.drawable.sideplank + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Forward Fold', 'Uttanasana', 'Root Heart Solar', 2, " +  R.drawable.forwardfold + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Warrior 1', 'Virabhandrasana 1', 'Solar Root', 2, " +  R.drawable.warrior + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Warrior 3', 'Virabhandrasana 3', 'Root Solar', 2, " +  R.drawable.warrior3 + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Wide Leg Forward Fold', 'Prasarita Padottanasana', 'Sacral', 2, " +  R.drawable.widefold + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Staff Pose', 'Chaturanga', 'Solar', 1, " +  R.drawable.staff + ");");
+        db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Hero', 'Virasana', 'Brow', 2, " +  R.drawable.hero + ");");
 
     }
 
