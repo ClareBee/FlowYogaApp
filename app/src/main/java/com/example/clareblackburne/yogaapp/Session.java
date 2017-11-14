@@ -200,7 +200,6 @@ public class Session {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + POSES_TABLE_NAME + " ORDER BY " + POSES_COLUMN_NAME, null);
         while(cursor.moveToNext()){
-            cursor.moveToPosition(0);
             int id = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_ID));
             String name = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_NAME));
             String sanskritName = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_SANSKRITNAME));
