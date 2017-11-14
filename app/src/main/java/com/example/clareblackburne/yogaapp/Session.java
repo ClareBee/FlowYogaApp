@@ -78,6 +78,10 @@ public class Session {
         return status;
     }
 
+    public String setStatus(String input){
+        return this.status = input;
+    }
+
     public boolean save(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();

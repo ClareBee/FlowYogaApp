@@ -10,4 +10,5 @@
     <color name="lightGrey">#eeeeee</color>
     <color name="darkGrey">#bbc7ce</color>
     <color name="darkPurple">#161b33</color>
+    <color name="white">#ffffff</color>
 </resources>

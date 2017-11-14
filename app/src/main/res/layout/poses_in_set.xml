@@ -9,11 +9,15 @@
         android:id="@+id/poseInSetName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/lightPurple"
         android:ems="10"
         android:lineSpacingExtra="8sp"
-        android:textAlignment="viewStart"
-        android:textSize="24sp"
+        android:paddingBottom="8dp"
         android:paddingLeft="25dp"
+        android:paddingTop="10dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/darkPurple"
+        android:textSize="18sp"
         tools:text="name" />
 
 </LinearLayout>

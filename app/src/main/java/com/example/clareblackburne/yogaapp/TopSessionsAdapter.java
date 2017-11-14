@@ -40,8 +40,9 @@ public class TopSessionsAdapter extends ArrayAdapter<Session> {
             public void onClick(View v) {
                 DBHelper dbHelper = new DBHelper(finalListItemView.getContext());
                 currentSession.updateAsComplete(dbHelper);
+                currentSession.setStatus("Y");
                 //doesn't refresh until you do it manually
-                parent2.refreshDrawableState();
+                notifyDataSetChanged();
             }
 
         });
