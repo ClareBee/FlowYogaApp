@@ -52,6 +52,7 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
         adapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        db.close();
     }
 
     public void onClickAddPoseToSessionButton(View button) {
@@ -65,9 +66,10 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
         dbHelper = new DBHelper(this);
 
         Set set = session.getSetInSession(dbHelper);//returns a set to check that the session has a set attached
-//        if(set == null){
+//        if(set == null){ this is wrong - woud prevent another 'set' i.e. pose being added to a session
         Set newSet = new Set(session_id, pose_id);
         newSet.save(dbHelper);
+        dbHelper.close();
 //     }
 //        else {
 //        set.update(session_id, pose_id, dbHelper);

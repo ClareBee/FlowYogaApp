@@ -22,7 +22,7 @@ public class TopSessionsActivity extends MainMenu {
         TopSessionsAdapter sessionsAdapter = new TopSessionsAdapter(this, sessionList);
         ListView listView = (ListView)findViewById(R.id.top_sessions_list);
         listView.setAdapter(sessionsAdapter);
-
+        dbHelper.close();
     }
 
     public void getSession(View listItem){

@@ -179,7 +179,7 @@ public class Session {
 
         Cursor cursor = db.rawQuery("SELECT sessions_poses.* FROM " + SET_TABLE_NAME + " WHERE session_id  = " + this_session_id.toString(), null);
         while(cursor.moveToNext()){
-            cursor.moveToFirst();
+//            cursor.moveToPosition(0);
             int id = cursor.getInt(cursor.getColumnIndex(SET_COLUMN_ID));
             int session_id = cursor.getInt(cursor.getColumnIndex(SET_SESSION_ID));
             int poses_id = cursor.getInt(cursor.getColumnIndex(SET_POSES_ID));
@@ -200,6 +200,7 @@ public class Session {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + POSES_TABLE_NAME + " ORDER BY " + POSES_COLUMN_NAME, null);
         while(cursor.moveToNext()){
+            cursor.moveToPosition(0);
             int id = cursor.getInt(cursor.getColumnIndex(POSES_COLUMN_ID));
             String name = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_NAME));
             String sanskritName = cursor.getString(cursor.getColumnIndex(POSES_COLUMN_SANSKRITNAME));

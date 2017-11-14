@@ -68,6 +68,7 @@ public class SessionActivity extends MainMenu {
             SetAdapter adapter = new SetAdapter(this, posesInSetList);
             setList2.setAdapter(adapter);
         }
+        dbHelper.close();
     }
 
     public void getPoseInSet(View listItem){
@@ -89,6 +90,7 @@ public class SessionActivity extends MainMenu {
         Integer id = extras.getInt("id");
         DBHelper dbHelper = new DBHelper(this);
         Session.delete(dbHelper, id);
+        dbHelper.close();
         Intent intent = new Intent(this, TopSessionsActivity.class);
         startActivity(intent);
     }
@@ -116,6 +118,7 @@ public class SessionActivity extends MainMenu {
             button.setBackgroundColor(Color.DKGRAY);
             DBHelper thisdb = new DBHelper(this);
             session.updateAsComplete(thisdb);
+            thisdb.close();
         }
     }
 
@@ -123,6 +126,7 @@ public class SessionActivity extends MainMenu {
         if(button.getId() == R.id.redoButton){
             DBHelper anotherdb = new DBHelper(this);
             session.redoSession(anotherdb);
+            anotherdb.close();
         }
     }
 
@@ -132,6 +136,7 @@ public class SessionActivity extends MainMenu {
         String selection = " id = ?";
         String[] values = {id.toString()};
         db.delete(SET_TABLE_NAME, selection, values);
+        db.close();
         return true;
     }
 
