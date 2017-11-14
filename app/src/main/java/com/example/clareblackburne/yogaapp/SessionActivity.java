@@ -104,7 +104,7 @@ public class SessionActivity extends MainMenu {
             intent.putExtra("id", session.getId());
             intent.putExtra("name", session.getName());
             intent.putExtra("day", session.getDay());
-            intent.putExtra("focus", session.getDay());
+            intent.putExtra("focus", session.getFocus());
             intent.putExtra("duration", session.getDuration());
             intent.putExtra("status", session.getStatus());
         startActivity(intent);}
