@@ -2,7 +2,7 @@ package com.example.clareblackburne.yogaapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -34,12 +34,27 @@ public class AddPoseActivity extends MainMenu{
 
     public void addPose(View button){
         dbHelper = new DBHelper(this);
-
         String name = nameInput.getText().toString();
+        if(TextUtils.isEmpty(name)) {
+            nameInput.setError("Please add");
+            return;
+        }
         String sanskritName = sanskritNameInput.getText().toString();
+        if(TextUtils.isEmpty(sanskritName)) {
+            sanskritNameInput.setError("Please add");
+            return;
+        }
         String chakra = chakraInput.getText().toString();
+        if(TextUtils.isEmpty(chakra)) {
+            chakraInput.setError("Please add");
+            return;
+        }
         Integer duration = Integer.parseInt(durationInput.getText().toString());
-        Integer image = R.drawable.lotus;
+        if(TextUtils.isEmpty(duration.toString())) {
+            durationInput.setError("Please add");
+            return;
+        }
+        Integer image = R.drawable.lotus3;
 
         Pose pose = new Pose(name, sanskritName, chakra, duration, image);
         pose.save(dbHelper);

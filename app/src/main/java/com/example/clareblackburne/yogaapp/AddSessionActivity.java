@@ -2,6 +2,7 @@ package com.example.clareblackburne.yogaapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -29,10 +30,26 @@ public class AddSessionActivity extends MainMenu {
 
     public void addSession(View button){
         dbHelper = new DBHelper(this);
+
         String name = nameText.getText().toString();
+        if(TextUtils.isEmpty(name)) {
+            nameText.setError("Please enter a name for your yoga session");
+            return;
+        }
         String day = dayText.getText().toString();
+        if(TextUtils.isEmpty(day)) {
+            dayText.setError("Please enter which day you want to do the session on");
+            return;
+        }
         String focus = focusText.getText().toString();
+        if(TextUtils.isEmpty(focus)) {
+            focusText.setError("Please say which body area you want to target");
+            return;
+        }
         Integer duration = Integer.parseInt(durationText.getText().toString());
+        if(TextUtils.isEmpty(duration.toString())){
+            durationText.setError("Please say how long you'd like the session to last");
+        }
         String status = "N";
         Session session = new Session(name, day, focus, duration, status);
         session.save(dbHelper);

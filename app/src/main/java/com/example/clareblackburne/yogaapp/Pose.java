@@ -54,6 +54,12 @@ public class Pose {
         return name;
     }
 
+    //for the spinner
+    @Override
+    public String toString() {
+        return getName();
+    }
+
     public String getSanskritName() {
         return sanskritName;
     }

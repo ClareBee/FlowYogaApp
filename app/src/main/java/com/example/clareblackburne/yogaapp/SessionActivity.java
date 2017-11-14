@@ -58,7 +58,7 @@ public class SessionActivity extends MainMenu {
         addPoseToSession = (Button)findViewById(R.id.addPoseToSession);
 
         sessionImageView = (ImageView)findViewById(R.id.sessionImageView);
-        sessionImageView.setImageResource(R.drawable.lotus);
+        sessionImageView.setImageResource(R.drawable.lotus3);
 
 
         Set set = session.getSet(dbHelper);

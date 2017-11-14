@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:textSize="18sp"
+        android:lineSpacingExtra="8sp"
+        android:textAlignment="viewStart"
+        android:textSize="24sp"
+        android:paddingLeft="25dp"
         tools:text="name" />
 
 </LinearLayout>

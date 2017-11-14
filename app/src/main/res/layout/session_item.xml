@@ -33,7 +33,7 @@
         android:id="@+id/imageList"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/lotus"
+        app:srcCompat="@drawable/lotus3"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintTop_toTopOf="parent"
