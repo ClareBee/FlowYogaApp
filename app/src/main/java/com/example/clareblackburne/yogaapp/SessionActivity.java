@@ -119,6 +119,8 @@ public class SessionActivity extends MainMenu {
             DBHelper thisdb = new DBHelper(this);
             session.updateAsComplete(thisdb);
             thisdb.close();
+            Intent returnToStart = new Intent(this, TopSessionsActivity.class);
+            startActivity(returnToStart);
         }
     }
 
@@ -127,6 +129,8 @@ public class SessionActivity extends MainMenu {
             DBHelper anotherdb = new DBHelper(this);
             session.redoSession(anotherdb);
             anotherdb.close();
+            Intent goback = new Intent(this, TopSessionsActivity.class);
+            startActivity(goback);
         }
     }
 
