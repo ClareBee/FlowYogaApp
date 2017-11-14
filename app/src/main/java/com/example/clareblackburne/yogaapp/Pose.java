@@ -86,7 +86,7 @@ public class Pose {
         cv.put(POSES_COLUMN_DURATION, this.duration);
         cv.put(POSES_COLUMN_IMAGE, this.image);
         db.insert(POSES_TABLE_NAME, null, cv);
-
+        db.close();
         return true;
     }
 
@@ -105,6 +105,7 @@ public class Pose {
             poses.add(pose);
         }
         cursor.close();
+        db.close();
         return poses;
     }
 
@@ -114,6 +115,7 @@ public class Pose {
         String selection = " id = ?";
         String[] values = {id.toString()};
         db.delete(POSES_TABLE_NAME, selection, values);
+        db.close();
         return true;
     }
 

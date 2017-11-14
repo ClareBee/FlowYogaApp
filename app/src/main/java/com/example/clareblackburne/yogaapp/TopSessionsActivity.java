@@ -27,6 +27,7 @@ public class TopSessionsActivity extends MainMenu {
 
     public void getSession(View listItem){
 
+
         Session session = (Session) listItem.getTag();
         Intent i = new Intent(this, SessionActivity.class);
         i.putExtra("name", session.getName());

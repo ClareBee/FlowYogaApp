@@ -112,6 +112,7 @@ public class Session {
     public static boolean deleteAll(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("DELETE FROM " + SESSIONS_TABLE_NAME);
+        db.close();
         return true;
     }
 
@@ -120,6 +121,7 @@ public class Session {
         String selection = " id = ?";
         String[] values = {id.toString()};
         db.delete(SESSIONS_TABLE_NAME, selection, values);
+        db.close();
         return true;
     }
 
@@ -136,6 +138,7 @@ public class Session {
         Integer id = this.getId();
         String[] args = new String[] {String.valueOf(id)};
         db.update(SESSIONS_TABLE_NAME, cv, selection, args);
+        db.close();
         return true;
     }
 
@@ -152,6 +155,7 @@ public class Session {
         Integer id = this.getId();
         String[] args = new String[] {String.valueOf(id)};
         db.update(SESSIONS_TABLE_NAME, cv, selection, args);
+        db.close();
         return true;
     }
     public Session getSessionById(Integer thisSessionId, DBHelper dbHelper){
@@ -169,6 +173,7 @@ public class Session {
             sessions.add(session);
         }
         cursor.close();
+        db.close();
         return sessions.get(0);
     }
 
@@ -187,6 +192,7 @@ public class Session {
             sets.add(set);
         }
         cursor.close();
+        db.close();
         if(sets.size() > 0) {
             return sets.get(0);
 
@@ -210,6 +216,7 @@ public class Session {
             poses.add(pose);
         }
         cursor.close();
+        db.close();
         return poses;
     }
 

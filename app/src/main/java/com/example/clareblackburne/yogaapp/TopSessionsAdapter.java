@@ -34,13 +34,16 @@ public class TopSessionsAdapter extends ArrayAdapter<Session> {
 
         ImageButton imageButton = (ImageButton) listItemView.findViewById(R.id.completeButtonList);
         final View finalListItemView = listItemView;
+        final ViewGroup parent2 = parent;
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 DBHelper dbHelper = new DBHelper(finalListItemView.getContext());
-                 currentSession.updateAsComplete(dbHelper);
-                 notifyDataSetChanged();
+                DBHelper dbHelper = new DBHelper(finalListItemView.getContext());
+                currentSession.updateAsComplete(dbHelper);
+                //doesn't refresh until you do it manually
+                parent2.refreshDrawableState();
             }
+
         });
         if(currentSession.getStatus().equalsIgnoreCase("Y")){
             listItemView.setBackgroundColor(Color.rgb(222, 217, 226));
