@@ -77,7 +77,6 @@ public class Pose {
     }
 
 
-
     public boolean save(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -107,14 +106,8 @@ public class Pose {
         }
         cursor.close();
         return poses;
-
     }
 
-    public static boolean deleteAll(DBHelper dbHelper){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.execSQL("DELETE FROM " + POSES_TABLE_NAME);
-        return true;
-    }
 
     public static boolean delete(DBHelper dbHelper, Integer id){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -123,7 +116,6 @@ public class Pose {
         db.delete(POSES_TABLE_NAME, selection, values);
         return true;
     }
-
 
 
 }

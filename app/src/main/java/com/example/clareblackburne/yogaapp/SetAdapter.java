@@ -24,7 +24,7 @@ public class SetAdapter extends ArrayAdapter<Pose>  {
         }
         Pose currentPoseinSet = getItem(position);
         TextView namePoseInSet = (TextView)listItemView.findViewById(R.id.poseInSetName);
-        namePoseInSet.setText(currentPoseinSet.getName().toString());
+        namePoseInSet.setText(currentPoseinSet.getName().toString()); // generating  null object reference
 
 
         listItemView.setTag(currentPoseinSet);

@@ -191,7 +191,6 @@ public class Session {
         } else {
             return null;
         }
-
     }
 
     public ArrayList<Pose> findAllPoses(DBHelper dbHelper){

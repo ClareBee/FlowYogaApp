@@ -33,22 +33,22 @@ public class AddSessionActivity extends MainMenu {
 
         String name = nameText.getText().toString();
         if(TextUtils.isEmpty(name)) {
-            nameText.setError("Please enter a name for your yoga session");
+            nameText.setError("Please add");
             return;
         }
         String day = dayText.getText().toString();
         if(TextUtils.isEmpty(day)) {
-            dayText.setError("Please enter which day you want to do the session on");
+            dayText.setError("Please add");
             return;
         }
         String focus = focusText.getText().toString();
         if(TextUtils.isEmpty(focus)) {
-            focusText.setError("Please say which body area you want to target");
+            focusText.setError("Please add");
             return;
         }
         Integer duration = Integer.parseInt(durationText.getText().toString());
         if(TextUtils.isEmpty(duration.toString())){
-            durationText.setError("Please say how long you'd like the session to last");
+            durationText.setError("Please add");
         }
         String status = "N";
         Session session = new Session(name, day, focus, duration, status);

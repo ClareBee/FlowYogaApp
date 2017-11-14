@@ -38,11 +38,7 @@ public class TopSessionsActivity extends MainMenu {
         startActivity(i);
     }
 
-    //how do i access session from here without recourse to a listItem?
-//    public void markComplete(View button){
-//        DBHelper dbh = new DBHelper(this);
-//        session.updateAsComplete(dbh);
-//    }
+
 
 
 }

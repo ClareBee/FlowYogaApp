@@ -54,8 +54,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session 1', 'Monday', 'Legs', 60, 'N');");
         db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Bridge', 'Setu Bandha Sarvangasasana', 'Root Heart Throat', 1, " +  R.drawable.bridge + ");");
 
-        //how to insert values?
-//        db.execSQL("INSERT INTO " + SET_TABLE_NAME + "(session_id, poses_id) VALUES (1, 1);");
 
 
     }

@@ -91,6 +91,7 @@ public class Set {
 //            Toast.makeText(R.id. "No poses in this session yet", Toast.LENGTH_SHORT).show();
             allPosesInThisSet.add(null);
         }
+
         return allPosesInThisSet;
     }
 

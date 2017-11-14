@@ -70,7 +70,6 @@ public class SessionActivity extends MainMenu {
         }
     }
 
-    //how to get this to work re: setList2 ListView if you click on the listItem you should be able to access the pose details
     public void getPoseInSet(View listItem){
 
         Pose pose = (Pose) listItem.getTag();
@@ -84,17 +83,6 @@ public class SessionActivity extends MainMenu {
         startActivity(intent3);
     }
 
-
-// do i have to delete the related set details before i can delete the session?? YES!!! How?
-//insert button NB
-//    public void deleteSet(View button){
-//        if(button.getId() == R.id.deleteSetButton) {
-//            Bundle extras = getIntent().getExtras();
-//            Integer id = extras.getInt("set_id");
-//            DBHelper db2 = new DBHelper(this);
-//            this.deleteSetById(db2, id);
-//        }
-//    }
 
     public void deleteSession(View button){
         Bundle extras = getIntent().getExtras();
@@ -139,7 +127,6 @@ public class SessionActivity extends MainMenu {
     }
 
 
-
     public boolean deleteSetById(DBHelper dbHelper, Integer id){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String selection = " id = ?";
@@ -147,6 +134,5 @@ public class SessionActivity extends MainMenu {
         db.delete(SET_TABLE_NAME, selection, values);
         return true;
     }
-
 
 }
