@@ -1,7 +1,6 @@
 package com.example.clareblackburne.yogaapp;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +10,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import static com.example.clareblackburne.yogaapp.DBHelper.SET_TABLE_NAME;
 
 public class SessionActivity extends MainMenu {
 
@@ -133,16 +130,6 @@ public class SessionActivity extends MainMenu {
             startActivity(goback);
         }
     }
-
-//left for future extension
-
-    public boolean deleteSetById(DBHelper dbHelper, Integer id){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String selection = " id = ?";
-        String[] values = {id.toString()};
-        db.delete(SET_TABLE_NAME, selection, values);
-        db.close();
-        return true;
-    }
+    
 
 }

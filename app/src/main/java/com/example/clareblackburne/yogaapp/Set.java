@@ -43,7 +43,7 @@ public class Set {
         return id;
     }
 
-
+//left in for future extension
     public static ArrayList<Set> all(DBHelper dbHelper){
         ArrayList<Set> sets = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
