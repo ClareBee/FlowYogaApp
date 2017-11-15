@@ -21,7 +21,6 @@ public class QuotationActivity extends MainMenu {
     }
 
 
-    //this is jumpy
     public void onClickGetAnother(View button){
         Quotations quotes = new Quotations();
         TextView quotation = (TextView)findViewById(R.id.quotation);

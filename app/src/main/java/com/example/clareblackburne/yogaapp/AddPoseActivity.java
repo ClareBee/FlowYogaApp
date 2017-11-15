@@ -63,7 +63,6 @@ public class AddPoseActivity extends MainMenu{
         startActivity(intent);
     }
 
-
 }
 
 

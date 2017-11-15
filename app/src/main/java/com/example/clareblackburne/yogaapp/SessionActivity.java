@@ -134,6 +134,7 @@ public class SessionActivity extends MainMenu {
         }
     }
 
+//left for future extension
 
     public boolean deleteSetById(DBHelper dbHelper, Integer id){
         SQLiteDatabase db = dbHelper.getWritableDatabase();

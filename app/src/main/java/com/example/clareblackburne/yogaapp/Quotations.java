@@ -22,9 +22,6 @@ public class Quotations {
         quotations.add("The quality of our breath expresses our inner feelings -" + System.getProperty("line.separator") + System.getProperty("line.separator") + " - TKV Desikachar.");
     }
 
-    public ArrayList<String> getQuotations() {
-        return quotations;
-    }
 
     public String randomQuotation(){
         Collections.shuffle(quotations);

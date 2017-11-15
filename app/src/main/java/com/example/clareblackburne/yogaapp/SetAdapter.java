@@ -19,10 +19,13 @@ public class SetAdapter extends ArrayAdapter<Pose>  {
         super(context, 0, posesInSet);}
 
     public View getView(int position, View listItemView, ViewGroup parent){
+
         if(listItemView == null){
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.poses_in_set, parent, false);
         }
+
         Pose currentPoseinSet = getItem(position);
+
         if(currentPoseinSet != null) {
             TextView namePoseInSet = (TextView) listItemView.findViewById(R.id.poseInSetName);
             namePoseInSet.setText(currentPoseinSet.getName().toString());

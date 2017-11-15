@@ -39,6 +39,5 @@ public class TopSessionsActivity extends MainMenu {
         startActivity(i);
     }
 
-
 }
 

@@ -105,7 +105,7 @@ public class Session {
         return sessions;
     }
 
-
+//left to allow for future extension
     public static boolean deleteAll(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("DELETE FROM " + SESSIONS_TABLE_NAME);
@@ -129,7 +129,7 @@ public class Session {
         cv.put(SESSIONS_COLUMN_NAME, this.name);
         cv.put(SESSIONS_COLUMN_DAY, this.day);
         cv.put(SESSIONS_COLUMN_FOCUS, this.focus);
-        cv.put(SESSIONS_COLUMN_DURATION, this.duration.toString());// is this updating?
+        cv.put(SESSIONS_COLUMN_DURATION, this.duration.toString());
         cv.put(SESSIONS_COLUMN_STATUS, "Y");
 
         Integer id = this.getId();
@@ -146,7 +146,7 @@ public class Session {
         cv.put(SESSIONS_COLUMN_NAME, this.name);
         cv.put(SESSIONS_COLUMN_DAY, this.day);
         cv.put(SESSIONS_COLUMN_FOCUS, this.focus);
-        cv.put(SESSIONS_COLUMN_DURATION, this.duration.toString());// is this updating?
+        cv.put(SESSIONS_COLUMN_DURATION, this.duration.toString());
         cv.put(SESSIONS_COLUMN_STATUS, "N");
 
         Integer id = this.getId();
@@ -181,6 +181,7 @@ public class Session {
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + SET_TABLE_NAME + " WHERE session_id  = " + this_session_id.toString(), null);
         while(cursor.moveToNext()){
+        //    still unsure about this line but it works ok without it
        //     cursor.moveToNext();
             int id = cursor.getInt(cursor.getColumnIndex(SET_COLUMN_ID));
             int session_id = cursor.getInt(cursor.getColumnIndex(SET_SESSION_ID));

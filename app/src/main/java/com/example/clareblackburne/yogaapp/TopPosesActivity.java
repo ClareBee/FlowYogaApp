@@ -15,6 +15,7 @@ public class TopPosesActivity extends MainMenu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.all_poses_list);
         dbHelper = new DBHelper(this);
         ArrayList<Pose> posesList = Pose.all(dbHelper);

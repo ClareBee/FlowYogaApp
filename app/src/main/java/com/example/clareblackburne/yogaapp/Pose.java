@@ -54,7 +54,7 @@ public class Pose {
         return name;
     }
 
-    //for the spinner
+    //for the spinner display
     @Override
     public String toString() {
         return getName();
@@ -118,6 +118,5 @@ public class Pose {
         db.close();
         return true;
     }
-
 
 }

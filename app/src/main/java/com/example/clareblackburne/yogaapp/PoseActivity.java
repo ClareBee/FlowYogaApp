@@ -45,7 +45,6 @@ public class PoseActivity extends MainMenu {
     }
 
 
-
     public void deletePose(View button){
         if(button.getId() == R.id.deletePoseButton){
         Bundle extras = getIntent().getExtras();

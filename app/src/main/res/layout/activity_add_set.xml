@@ -30,7 +30,7 @@
         android:backgroundTint="@color/colorAccent"
         android:onClick="onClickAddPoseToSessionButton"
         android:padding="10dp"
-        android:text="Add Pose to Session"
+        android:text="@string/addPoseToSessionBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"

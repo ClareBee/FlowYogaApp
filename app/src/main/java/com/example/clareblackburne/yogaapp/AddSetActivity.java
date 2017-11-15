@@ -65,11 +65,8 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
 
         dbHelper = new DBHelper(this);
 
-        Set set = session.getSetInSession(dbHelper);
         Set newSet = new Set(session_id, pose_id);
         newSet.save(dbHelper);
-
-
 
 
         Intent intent2  = new Intent(this, SessionActivity.class);

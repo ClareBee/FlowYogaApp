@@ -43,14 +43,6 @@ public class Set {
         return id;
     }
 
-    public int getSession_id() {
-        return session_id;
-    }
-
-    public int getPoses_id() {
-        return poses_id;
-    }
-
 
     public static ArrayList<Set> all(DBHelper dbHelper){
         ArrayList<Set> sets = new ArrayList<>();
@@ -85,13 +77,17 @@ public class Set {
                 allPosesInThisSet.add(pose);
             }
             cursor.close();
+
         } else {
+
             allPosesInThisSet.add(null);
+
         }
 
         return allPosesInThisSet;
     }
 
+    //left to allow for future extension
     public boolean update(Integer session_id, Integer poses_id, DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -113,6 +109,7 @@ public class Set {
         return true;
     }
 
+    //left to allow for future extension
     public boolean deleteAllSet(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("DELETE FROM " + SET_TABLE_NAME);

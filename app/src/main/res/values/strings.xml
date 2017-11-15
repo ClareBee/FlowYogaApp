@@ -8,5 +8,34 @@
     <string name="addPoseToSession">Add Pose to Session</string>
     <string name="complete">Complete?</string>
     <string name="imageOfPose">Image of pose</string>
+    <string name="addPoseContent">Add a new pose</string>
+    <string name="addPoseButton">Add Pose</string>
+    <string name="addPoseTitle">Add a new pose</string>
+    <string name="newPoseLabel">New:</string>
+    <string name="newSanskritLabel">Sanskrit name:</string>
+    <string name="newDurationLabel">Duration:</string>
+    <string name="newChakraLabel">Chakra:</string>
+    <string name="addNewSessionTitle">Add a new session</string>
+    <string name="newSessionLabel">Name:</string>
+    <string name="newSessionDayLabel">Day:</string>
+    <string name="newSessionFocusLabel">Focus:</string>
+    <string name="newSessionDurationLabel">Duration:</string>
+    <string name="addSessionButton">Add Session</string>
+    <string name="addPoseToSessionBtn">Add Pose to Session</string>
+    <string name="lotusLogoLaunch">Picture of lotus</string>
+    <string name="fingerPrint">Button to indicate fingerprint needed</string>
+    <string name="deletPoseOption">Delete</string>
+    <string name="durationMins">Duration (mins);</string>
+    <string name="chakraEntry">Chakra:</string>
+    <string name="quotationTextEntry">Yoga quotation appears here</string>
+    <string name="nextButton">Next</string>
+    <string name="nextBtn">Generates random quotation</string>
+    <string name="deleteSessionBtn">Delete Session</string>
+    <string name="focusTag">Focus:</string>
+    <string name="sessionDuration">Duration:</string>
+    <string name="doAgainBtn">Do Again</string>
+    <string name="imagePoseList">Image of yoga pose</string>
+    <string name="completeBtn">Mark to indicate the session is complete</string>
+    <string name="listLotus">Image of lotus</string>
 
 </resources>
