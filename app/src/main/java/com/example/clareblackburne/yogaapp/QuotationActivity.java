@@ -22,16 +22,10 @@ public class QuotationActivity extends MainMenu {
 
 
     public void onClickGetAnother(View button){
-        Quotations quotes = new Quotations();
-        TextView quotation = (TextView)findViewById(R.id.quotation);
-        quotation.setText(quotes.randomQuotation());
-//is there a way to refresh a page without an intent?
-        finish();
+
         Intent intent = new Intent(this, QuotationActivity.class);
         finish();
-        overridePendingTransition( 0, 0);
-        startActivity(getIntent());
-        overridePendingTransition( 0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 }

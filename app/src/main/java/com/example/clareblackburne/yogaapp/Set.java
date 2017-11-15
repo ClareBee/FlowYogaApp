@@ -81,7 +81,6 @@ public class Set {
         } else {
 
             allPosesInThisSet.add(null);
-
         }
 
         return allPosesInThisSet;
