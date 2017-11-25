@@ -1,10 +1,16 @@
 package com.example.clareblackburne.yogaapp;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by clareblackburne on 11/11/2017.
@@ -17,6 +23,7 @@ public class AddSessionActivity extends MainMenu {
     EditText focusText;
     EditText durationText;
     DBHelper dbHelper;
+    Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,29 @@ public class AddSessionActivity extends MainMenu {
         dayText = (EditText)findViewById(R.id.dayText);
         focusText = (EditText)findViewById(R.id.focusText);
         durationText = (EditText)findViewById(R.id.durationText);
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateDayText();
+            }
+        };
+
+        dayText.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                        new DatePickerDialog(AddSessionActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
+
+    private void updateDayText() {
+        String myFormat = "yyyy/MM/dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        dayText.setText(sdf.format(calendar.getTime()));
     }
 
     public void addSession(View button){

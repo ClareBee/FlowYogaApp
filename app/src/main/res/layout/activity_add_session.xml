@@ -103,6 +103,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="63dp"
         android:text="@string/newSessionDayLabel"
+        android:focusableInTouchMode="false"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -161,4 +162,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/durationText"
         app:layout_constraintVertical_bias="0.494" />
+
+
 </android.support.constraint.ConstraintLayout>

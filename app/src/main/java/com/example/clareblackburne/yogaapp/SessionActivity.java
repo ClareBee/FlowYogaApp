@@ -130,6 +130,6 @@ public class SessionActivity extends MainMenu {
             startActivity(goback);
         }
     }
-    
+
 
 }

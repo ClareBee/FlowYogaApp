@@ -37,7 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public DBHelper(Context context){
-        super(context, DATABASE_NAME, null, 6);
+        super(context, DATABASE_NAME, null, 9);
     }
 
     public void onCreate(SQLiteDatabase db){
@@ -48,11 +48,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //seed tables
 
-        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Monday', 'Legs', 60, 'N');");
-        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Tuesday', 'Shoulders', 45, 'N');");
-        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Thursday', 'Arms', 50, 'N');");
-        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', 'Saturday', 'Core', 60, 'N');");
-        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Relaxation', 'Sunday', 'All', 60, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', '2017/09/01', 'Legs', 60, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', '2017/09/06', 'Shoulders', 45, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', '2017/10/01', 'Arms', 50, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Session', '2017/10/02', 'Core', 60, 'N');");
+        db.execSQL("INSERT INTO " + SESSIONS_TABLE_NAME + " (name, day, focus, duration, status) VALUES ('Relaxation', '2017/11/26', 'All', 60, 'N');");
         db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Bridge', 'Setu Bandha Sarvangasasana', 'Heart Throat', 1, " +  R.drawable.bridge + ");");
         db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Half Moon Pose', 'Ardha Chandrasana', 'Sacral', 1, " +  R.drawable.halfmoon + ");");
         db.execSQL("INSERT INTO " + POSES_TABLE_NAME + " (name, sanskritName, chakra, duration, image) VALUES ('Sitting Spinal Twist', 'Ardha Matsyendrasana', 'Sacral', 1, " +  R.drawable.seatedspinal + ");");
