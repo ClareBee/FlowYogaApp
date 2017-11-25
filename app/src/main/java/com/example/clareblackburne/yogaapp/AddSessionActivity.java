@@ -76,10 +76,14 @@ public class AddSessionActivity extends MainMenu {
             focusText.setError("Please add");
             return;
         }
-        Integer duration = Integer.parseInt(durationText.getText().toString());
-        if(TextUtils.isEmpty(duration.toString())){
+
+        String input = durationText.getText().toString();
+        if(input.trim().equals("")) {
             durationText.setError("Please add");
+            return;
         }
+        Integer duration = Integer.parseInt(durationText.getText().toString());
+
         String status = "N";
         Session session = new Session(name, day, focus, duration, status);
         session.save(dbHelper);

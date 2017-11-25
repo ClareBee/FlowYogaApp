@@ -49,11 +49,14 @@ public class AddPoseActivity extends MainMenu{
             chakraInput.setError("Please add");
             return;
         }
-        Integer duration = Integer.parseInt(durationInput.getText().toString());
-        if(TextUtils.isEmpty(duration.toString())) {
-            durationInput.setText(getString(R.string.defaultSession));
+
+        String input = durationInput.getText().toString();
+        if(input.trim().equals("")) {
+            durationInput.setError("Please add");
             return;
         }
+
+        final Integer duration = Integer.parseInt(durationInput.getText().toString());
         Integer image = R.drawable.lotus3;
 
         Pose pose = new Pose(name, sanskritName, chakra, duration, image);
