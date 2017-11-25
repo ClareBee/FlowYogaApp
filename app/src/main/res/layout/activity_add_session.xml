@@ -29,6 +29,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:text="day "
+        android:focusable="false"
         android:layout_marginTop="37dp"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
