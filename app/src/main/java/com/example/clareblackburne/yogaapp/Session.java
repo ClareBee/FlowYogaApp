@@ -105,13 +105,6 @@ public class Session {
         return sessions;
     }
 
-//left to allow for future extension
-    public static boolean deleteAll(DBHelper dbHelper){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.execSQL("DELETE FROM " + SESSIONS_TABLE_NAME);
-        db.close();
-        return true;
-    }
 
     public static boolean delete(DBHelper dbHelper, Integer id){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -181,8 +174,7 @@ public class Session {
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + SET_TABLE_NAME + " WHERE session_id  = " + this_session_id.toString(), null);
         while(cursor.moveToNext()){
-        //    still unsure about this line but it works ok without it
-       //     cursor.moveToNext();
+        //    still unsure about this line
             int id = cursor.getInt(cursor.getColumnIndex(SET_COLUMN_ID));
             int session_id = cursor.getInt(cursor.getColumnIndex(SET_SESSION_ID));
             int poses_id = cursor.getInt(cursor.getColumnIndex(SET_POSES_ID));

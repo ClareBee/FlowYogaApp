@@ -86,18 +86,6 @@ public class Set {
         return allPosesInThisSet;
     }
 
-    //left to allow for future extension
-    public boolean update(Integer session_id, Integer poses_id, DBHelper dbHelper){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(SET_SESSION_ID, session_id);
-        contentValues.put(SET_POSES_ID, poses_id);
-        String selection = "session_id=?";
-        Integer id = this.getId();
-        String[] values = new String[] {String.valueOf(id)};
-        db.update(SET_TABLE_NAME, contentValues, selection, values);
-        return true;
-    }
 
     public boolean save(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -108,11 +96,5 @@ public class Set {
         return true;
     }
 
-    //left to allow for future extension
-    public boolean deleteAllSet(DBHelper dbHelper){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.execSQL("DELETE FROM " + SET_TABLE_NAME);
-        return true;
-    }
 
 }
