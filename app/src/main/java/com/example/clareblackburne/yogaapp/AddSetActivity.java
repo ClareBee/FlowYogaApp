@@ -79,8 +79,8 @@ public class AddSetActivity extends MainMenu implements OnItemSelectedListener {
     public void onItemSelected(AdapterView<?> parent, View view, int position,
                                long id){
         Pose pose = (Pose) parent.getItemAtPosition(position);
-        Toast.makeText(parent.getContext(), "You've chosen to add: " + pose.getName(),
-                Toast.LENGTH_LONG).show();
+        Toast.makeText(parent.getContext(), "Click to add: " + pose.getName(),
+                Toast.LENGTH_SHORT).show();
     }
 
 
