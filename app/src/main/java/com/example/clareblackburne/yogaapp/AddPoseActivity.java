@@ -51,7 +51,7 @@ public class AddPoseActivity extends MainMenu{
         }
         Integer duration = Integer.parseInt(durationInput.getText().toString());
         if(TextUtils.isEmpty(duration.toString())) {
-            durationInput.setError("Please add");
+            durationInput.setText(getString(R.string.defaultSession));
             return;
         }
         Integer image = R.drawable.lotus3;

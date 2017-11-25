@@ -2,17 +2,21 @@ package com.example.clareblackburne.yogaapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class PoseActivity extends MainMenu {
+public class PoseActivity extends MainMenu implements View.OnClickListener {
 
     TextView namePose;
     TextView sanskritPose;
     TextView durationPose;
     TextView chakraPose;
     ImageView poseImage;
+    ImageButton stopButton;
+    ImageButton playButton;
 
 
     @Override
@@ -23,8 +27,11 @@ public class PoseActivity extends MainMenu {
         String name = extras.getString("name");
         String sanskritName = extras.getString("sanskritName");
         String chakra = extras.getString("chakra");
-        Integer duration = extras.getInt("duration");
+        final Integer duration = extras.getInt("duration");
         Integer image = extras.getInt("image");
+
+        stopButton = (ImageButton)findViewById(R.id.stopButton);
+        playButton = (ImageButton)findViewById(R.id.playButton);
 
         namePose = (TextView) findViewById(R.id.namePose);
         namePose.setText(name);
@@ -33,14 +40,40 @@ public class PoseActivity extends MainMenu {
         sanskritPose.setText(sanskritName);
 
         durationPose = (TextView) findViewById(R.id.durationPose);
-        durationPose.setText(duration.toString());
+
+        final CountDownTimer timer;
+        final int poseDuration = (duration * 60) * 1000;
+        durationPose.setText(duration + " min");
+        timer = new CountDownTimer(poseDuration, 1000){
+
+            public void onTick(long poseDuration) {
+                durationPose.setText(" " + poseDuration / 1000);
+            }
+
+            public void onFinish() {
+                durationPose.setText(duration + " min");
+            }
+        };
+        playButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                timer.start();
+            }
+        });
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timer.cancel();
+            }
+        });
+
 
         chakraPose = (TextView) findViewById(R.id.chakraPose);
         chakraPose.setText(chakra);
 
         poseImage = (ImageView) findViewById(R.id.poseImage);
         poseImage.setImageResource(image);
-
 
     }
 
@@ -53,5 +86,11 @@ public class PoseActivity extends MainMenu {
         Pose.delete(dbHelper, id);
         Intent intent = new Intent(this, TopPosesActivity.class);
         startActivity(intent);}
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
     }
 }
