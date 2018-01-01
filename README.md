@@ -1,5 +1,5 @@
-# FlowYogaApp
 
+# FlowYogaApp
 
 ## Java/Android Studio Project: An App to Organise an At-Home Yoga Practice
 
