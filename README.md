@@ -1,6 +1,7 @@
 
-# FlowYogaApp
+![image](collageImage.png)
 
+# FlowYogaApp
 ## Java/Android Studio Project: An App to Organise an At-Home Yoga Practice
 
 Using SQLite Database (3 tables, including 1 join table)
